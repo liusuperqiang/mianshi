@@ -61,21 +61,120 @@ Class Mysql implements db
     public function conn()
     {
         // TODO: Implement conn() method.
-        echo 'mysql连接成功';
+        echo 'mysql连接成功' . '<br>';
     }
 }
 
 $db = new Mysql();
 $db->conn();
 
+/**
+ * 观察者模式
+ */
 
+/**
+ * 职责链模式
+ * 处理举报问题
+ */
 
+class borad {
+    protected $level = 1;
+    protected $top = 'admin';
 
+    public function handle ($lev)
+    {
+        if ($lev <= $this->level) {
+            echo '删帖' . '<br>';
+        } else {
+            $admin = new $this->top;
+            $admin->handle($lev);
+        }
+    }
+}
 
+class admin {
+    protected $level = 2;
+    protected $top = 'police';
+    public function handle ($lev)
+    {
+        if ($lev <= $this->level) {
+            echo '封号' . '<br>';
+        } else {
+            $admin = new $this->top;
+            $admin->handle($lev);
+        }
+    }
+}
 
+class police {
+    protected $level;
+    protected $top;
+    public function handle ($lev)
+    {
+        echo '坐牢' . '<br />';
+    }
+}
+$lev = 3;
+$h = new borad();
+$h->handle($lev);
 
+/**
+ * 策略模式
+ */
+interface cacu {
+    function cacl ($op1, $op2);
+}
 
+class MathAdd implements cacu {
+    public function cacl($op1, $op2)
+    {
+        // TODO: Implement cacl() method.
+        return $op1 + $op2;
+    }
+}
+class MathSub implements cacu {
+    public function cacl($op1, $op2)
+    {
+        // TODO: Implement cacl() method.
+        return $op1 - $op2;
+    }
+}
+class MathMul implements cacu {
+    public function cacl($op1, $op2)
+    {
+        // TODO: Implement cacl() method.
+        return $op1 * $op2;
+    }
+}
+class MathDiv implements cacu {
+    public function cacl($op1, $op2)
+    {
+        // TODO: Implement cacl() method.
+        return $op1 / $op2;
+    }
+}
 
+class CCal {
+    protected $cal;
+    public function __construct($type)
+    {
+        $s = 'Math' . $type;
+        $this->cal = new $s();
+    }
+
+    public function h ($op1, $op2)
+    {
+        return $this->cal->cacl($op1, $op2);
+    }
+}
+$type = 'Div';
+$z = new CCal($type);
+$r = $z->h(6, 3);
+echo $r . '<br>';
+
+/**
+ * 装饰器模式
+ */
 
 
 
