@@ -12,18 +12,16 @@ class Base
         return self::$redisObj;
     }
 
-    static function output($data = array(), $errNo = 0, $errMsg = 'ok')
+    /*static function output($data = array(), $errNo = 0, $errMsg = 'ok')
     {
         $res['errno'] = $errNo;
         $res['errmsg'] = $errMsg;
         $res['data'] = $data;
         echo json_encode($res);exit();
-    }
+    }*/
 
-    private function __clone()
-    {
-
-    }
+    //单例模式防止被克隆
+    private function __clone(){}
 }
 
 /**
@@ -34,10 +32,9 @@ class Base
  */
 
 $s1 = Base::conRedis();
-$s2 = clone $s1;
-if ($s1 === $s2) {
+/*if ($s1 === $s2) {
     echo '是同一个对象';
 } else {
     echo '不是同一个对象';
-}
+}*/
 ?>
