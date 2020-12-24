@@ -175,6 +175,46 @@ echo $r . '<br>';
 /**
  * 装饰器模式
  */
+class BaseArticle {
+    protected $content;
+    public function __construct($art)
+    {
+        $this->content = $art;
+    }
+
+    public function decrator ()
+    {
+        return $this->content;
+    }
+}
+
+class BianArt {
+    public function __construct($art)
+    {
+        $this->art = $art;
+        $this->decrator();
+    }
+    public function decrator ()
+    {
+        return $this->content = $this->art->decrator() . '小编摘要';
+    }
+}
+
+class SEOArt {
+    public function __construct($art)
+    {
+        $this->art = $art;
+        $this->decrator();
+    }
+    public function decrator ()
+    {
+        return $this->content = $this->art->decrator() . 'SEO编辑';
+    }
+}
+$A = new SEOArt(new BianArt(new BaseArticle('好好学习')));
+$b = $A->decrator();
+echo $b;
+
 
 
 
