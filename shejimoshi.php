@@ -215,6 +215,13 @@ $A = new SEOArt(new BianArt(new BaseArticle('好好学习')));
 $b = $A->decrator();
 echo $b;
 
+/**
+ * 适配器模式：不修改原来代码；添加一个适配器类，返回所需的资源
+ */
+
+/**
+ * 桥接模式 bridge
+ */
 
 
 

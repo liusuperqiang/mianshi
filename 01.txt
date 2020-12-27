@@ -4,3 +4,9 @@ php7源码安装
 3、make
 4、make install
 php配置绝对路径  修改~/.bash_profile文件，添加 alias php=/home/work/study/php/bin/php  之后source ~/.bash_profile
+
+php -i | grep php.ini  查看php.ini的目录在哪
+cd - 命令返回上次的目录
+netstat -anp | grep 9501 查看端口号
+
+telnet 127.0.0.1 9501 测试链接
