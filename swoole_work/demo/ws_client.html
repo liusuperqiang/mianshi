@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>websocket-swoole-client-test</h1>
+    <script>
+        var wsUrl = 'ws://www.xuniji.com:8812';
+
+        var websocket = new WebSocket(wsUrl);
+
+        //实例对象onOpen对象
+        websocket.onopen = function (e) {
+            console.log('connect-swoole-success')
+            websocket.send('hello ws server');
+        }
+
+        //onMessage事件
+        websocket.onmessage = function (e) {
+            console.log('ws-server-return-data:' + e.data);
+        }
+
+        //onclose
+        websocket.onclose = function (ev) {
+            console.log('close')
+        }
+
+        //onerror
+        websocket.onerror = function (ev) {
+            console.log('error:' + ev.data)
+        }
+    </script>
+</body>
+</html>
