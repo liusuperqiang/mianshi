@@ -16,3 +16,13 @@ cd - 命令返回上次的目录
 netstat -anp | grep 9501 查看端口号
 
 telnet 127.0.0.1 9501 测试链接
+
+ps aux | grep process.php  查看文件的进程
+
+pstree -p  22727   查看进程树
+
+ps aft | grep http_server  查看进程层级
+
+
+==================swoole进程使用场景======================
+访问站点时间过长或超时，需要开启进程来执行
